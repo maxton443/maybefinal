@@ -1,3 +1,5 @@
+# handlers/start.py
+
 from telegram import Update
 from telegram.ext import ContextTypes
 from datetime import datetime
@@ -5,7 +7,7 @@ import json
 import os
 
 USER_FILE = "data/users.json"
-ADMIN_ID = 6194108258  # নিজের টেলিগ্রাম আইডি বসাও
+ADMIN_ID = 6194108258  # 🔴 এখানে তোমার নিজের ইউজার ID বসাও
 
 def load_users():
     if os.path.exists(USER_FILE):
@@ -22,8 +24,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = str(user.id)
     users = load_users()
 
-    is_new = user_id not in users
-    if is_new:
+    if user_id not in users:
         users[user_id] = {
             "name": user.full_name,
             "username": user.username,
@@ -31,13 +32,14 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         }
         save_users(users)
 
+        total_users = len(users)
         msg = (
             f"✅ New User Joined\n"
             f"👤 Name: {user.full_name}\n"
             f"🆔 Username: @{user.username or 'None'}\n"
             f"📅 Join Date: {users[user_id]['joined']}\n"
-            f"👥 Total Users: {len(users)}"
+            f"👥 Total Users: {total_users}"
         )
         await context.bot.send_message(chat_id=ADMIN_ID, text=msg)
 
-    await update.message.reply_text("👋 স্বাগতম! আপনি বট চালু করেছেন।")
+    await update.message.reply_text("👋 হ্যালো! আপনি বট শুরু করেছেন!")
