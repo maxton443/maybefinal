@@ -2,10 +2,9 @@ from telegram.ext import ApplicationBuilder, CommandHandler
 from handlers.start import start_command
 from handlers.menu import menu_handler
 from handlers.admin import admin_handler
-import os
 import asyncio
 
-TOKEN = "7773509344:AAFS6Pfbgtz48NQ2januQoLjDhs-eZ_w1w0"  # GitHub Secret থেকে নিবে
+TOKEN = "7773509344:AAFS6Pfbgtz48NQ2januQoLjDhs-eZ_w1w0"  # ✅ সরাসরি টোকেন
 
 app = ApplicationBuilder().token(TOKEN).build()
 
