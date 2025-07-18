@@ -20,6 +20,8 @@ def save_users(users):
         json.dump(users, f)
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print("🚀 /start command received from:", update.effective_user.username)
+
     user = update.effective_user
     user_id = str(user.id)
     users = load_users()
