@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Env files
+.env
+
+# Editor folders
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Sensitive/Generated files
+data/users.json
