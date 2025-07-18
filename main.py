@@ -1,5 +1,3 @@
-# main.py
-
 from telegram.ext import ApplicationBuilder, CommandHandler
 from handlers.start import start_command
 from handlers.menu import menu_handler
@@ -13,6 +11,8 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("menu", menu_handler))
 app.add_handler(CommandHandler("admin", admin_handler))
+
+print("✅ Bot started polling...")  # এই লাইন যোগ করলাম
 
 if __name__ == "__main__":
     asyncio.run(app.run_polling())
